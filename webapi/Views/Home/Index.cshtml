@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html data-ng-app="TP">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Test Project App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/dist.dev/vendor/bootstrap.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/dist.dev/content/base/_base.css">
+    <!-- endinject -->
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TP</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="primary-area mt10">
+            <div ui-view></div>
+        </div>
+    </div>
+
+
+    <!-- bower:js -->
+    <script src="/dist.dev/vendor/angular.js"></script>
+    <script src="/dist.dev/vendor/angular-ui-router.js"></script>
+    <!-- endinject -->
+    <!-- Begin: Source JS -->
+    <!-- inject:js -->
+    <script src="/dist.dev/app/app.module.js"></script>
+    <script src="/dist.dev/app/core/core.module.js"></script>
+    <script src="/dist.dev/app/core/controllers/homeView.controller.js"></script>
+    <!-- endinject -->
+    <!-- End: Source JS -->
+
+</body>
+</html>
