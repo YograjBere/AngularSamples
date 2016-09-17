@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean-dev' />
+﻿/// <binding Clean='clean-dev, serve' />
 var gulp = require('gulp'),
     bower = require('bower');
 

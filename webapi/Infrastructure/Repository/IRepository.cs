@@ -36,6 +36,12 @@ namespace webapi.Infrastructure.Repository
         Student GetStudentById(int id);
 
         /// <summary>
+        /// Gets the students.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Student> GetStudents();
+
+        /// <summary>
         /// Updates the student.
         /// </summary>
         /// <param name="student">The student.</param>
@@ -55,7 +61,6 @@ namespace webapi.Infrastructure.Repository
         /// <param name="pageSize">Size of the page.</param>
         /// <returns></returns>
         // IEnumerable<Student> GetStudents(Func<Student, bool> predicate = null, int pageIndex = 1, int pageSize = 10);
-
     }
 
     public class PageContext<T>
@@ -184,6 +189,15 @@ namespace webapi.Infrastructure.Repository
         {
             var student = _dbContext.Students.Find(id);
             return student;
+        }
+
+        /// <summary>
+        /// Gets the students.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Student> GetStudents()
+        {
+            return _dbContext.Students;
         }
 
         //public IEnumerable<Student> GetStudents(Expression<Func<Student, bool>> predicate)

@@ -25,10 +25,10 @@ namespace webapi.Controllers
         }
 
         [HttpPost]
+        [Route]
         public IHttpActionResult CreateStudent(Student student)
         {
             _operationName = "Create Student";
-
             Func<IHttpActionResult> operation = () =>
             {
                 var id = _studentRepository.CreateStudent(student);
@@ -38,7 +38,36 @@ namespace webapi.Controllers
             return PerformOperation(operation);
         }
 
+        [Route]
+        [HttpGet]
+        public IHttpActionResult GetStudents()
+        {
+            _operationName = "Retrieve Students";
+            Func<IHttpActionResult> operation = () =>
+            {
+                var students = _studentRepository.GetStudents();
+                return Ok(students);
+            };
+
+            return PerformOperation(operation);
+        }
+
+        [Route("{id:int}")]
+        [HttpGet]
+        public IHttpActionResult GetStudentById(int id)
+        {
+            _operationName = "Retrieve Students by id";
+            Func<IHttpActionResult> operation = () =>
+            {
+                var student = _studentRepository.GetStudentById(id);
+                return Ok(student);
+            };
+
+            return PerformOperation(operation);
+        }
+
         [HttpDelete]
+        [Route("{id:int}")]
         public IHttpActionResult DeleteStudent(int id)
         {
             _operationName = "Delete Student";
@@ -53,6 +82,7 @@ namespace webapi.Controllers
         }
 
         [HttpPut]
+        [Route]
         public IHttpActionResult UpdateStudent(Student student)
         {
             _operationName = "Update Student";

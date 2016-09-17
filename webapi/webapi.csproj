@@ -235,6 +235,7 @@
     <Compile Include="Infrastructure\Constants\DbConstants.cs" />
     <Compile Include="Infrastructure\Constants\ErrorMessages.cs" />
     <Compile Include="Infrastructure\ErrorHandler\GlobalExceptionHandler.cs" />
+    <Compile Include="Infrastructure\Logger\ILogger.cs" />
     <Compile Include="Infrastructure\Logger\Logger.cs" />
     <Compile Include="Infrastructure\Repository\IRepository.cs" />
     <Compile Include="Infrastructure\Validators\StudentValidator.cs" />
@@ -302,7 +303,16 @@
     <Content Include="src\app\app.module.js" />
     <Content Include="src\app\core\controllers\homeView.controller.js" />
     <Content Include="src\app\core\controllers\homeView.controller.spec.js" />
+    <Content Include="src\app\students\controllers\studentCreate.controller.js" />
+    <Content Include="src\app\students\controllers\studentListView.controller.js" />
     <Content Include="src\app\core\core.module.js" />
+    <Content Include="src\app\core\views\error.tpl.html" />
+    <Content Include="src\app\core\views\home.tpl.html" />
+    <Content Include="src\app\students\services\student.service.js" />
+    <Content Include="src\app\students\student.module.js" />
+    <Content Include="src\app\students\views\studentCreateView.tpl.html" />
+    <Content Include="src\app\students\views\studentListView.tpl.html" />
+    <Content Include="src\app\students\views\studentsView.tpl.html" />
     <Content Include="src\assets\base\_base.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
