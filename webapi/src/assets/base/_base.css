@@ -12,9 +12,17 @@
     max-width: 5%;
 }
 
-.keepSpace {
-    padding-bottom: 20px;
+.keepTopSpace {
     padding-top: 20px;
+}
+
+.keepBottomSpace {
+    padding-bottom: 20px;
+}
+
+.keepTopBottomSpace {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .createStudentLink {
@@ -66,3 +74,45 @@
     margin-right: 120px;
     clear: both;
 }
+
+.siteHeader {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-radius: 50px;
+    background-color: black;
+    color: antiquewhite;
+}
+
+.effect5 {
+    position: relative;
+}
+
+    .effect5:before, .effect5:after {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 25px;
+        left: 10px;
+        width: 50%;
+        top: 80%;
+        max-width: 300px;
+        background: #777;
+        -webkit-box-shadow: 0 35px 20px #777;
+        -moz-box-shadow: 0 35px 20px #777;
+        box-shadow: 0 35px 20px #777;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        -o-transform: rotate(-8deg);
+        -ms-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+    }
+
+    .effect5:after {
+        -webkit-transform: rotate(8deg);
+        -moz-transform: rotate(8deg);
+        -o-transform: rotate(8deg);
+        -ms-transform: rotate(8deg);
+        transform: rotate(8deg);
+        right: 10px;
+        left: auto;
+    }

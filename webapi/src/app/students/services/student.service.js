@@ -29,7 +29,6 @@
         }
 
         function getPromiseForGetOperation(url) {
-            debugger;
             var defer = $q.defer();
             $http.get(url).then(function (response) {
                 defer.resolve(response);
@@ -38,19 +37,18 @@
         }
 
         function getPromiseForOperation(operation) {
-            debugger;
             var defer = $q.defer();
-
             operation.then(resolvePromise);
-
             return defer.promise;
         }
 
         function deleteStudent(studentId) {
-            debugger;
-            var url = servicePrefix;
-            var operation = $http.delete(url, studentId);
-            return getPromiseForOperation(operation);
+            var url = servicePrefix + "/" + studentId;
+            var defer = $q.defer();
+            $http.delete(url, studentId).then(function (response) {
+                defer.resolve(response);
+            });
+            return defer.promise;
         }
 
         function updateStudent(student) {
@@ -70,6 +68,10 @@
 
         function gotoState(state) {
             $state.go(state);
+        }
+
+        function reloadState() {
+            $state.reload();
         }
 
         function getCurrentMode() {
