@@ -1,8 +1,99 @@
 ﻿<h1>Students List</h1>
+<style>
+    /*.actionColumns {
+        width: 5%;
+        max-width: 5%;
+    }
+
+    .keepSpace {
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .createStudentLink {
+        float: right;
+        position: fixed;
+        right: 20px;
+    }
+
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+    }
+
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }*/
+</style>
 
 <div>
-    <a ui-sref="students.create"
-       class="animsition-link"
-       data-animsition-out-class="overlay-slide-out-top"
-       data-animsition-out-duration="2000">Create Student</a>
+    <button ui-sref="students.create" type="button" class="btn btn-default btn-circle btn-lg createStudentLink"
+            title="Create Student">
+        <i class="glyphicon glyphicon-plus"></i>
+    </button>
 </div>
+<div class="keepSpace"></div>
+<div class="container">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Grade</th>
+                <th>Date of birth</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="stud in studentList">
+            <td>{{stud.id}}</td>
+            <td>{{stud.firstName}}</td>
+            <td>{{stud.lastName}}</td>
+            <td>{{stud.grade}}</td>
+            <td>{{stud.dateOfBirth | date}}</td>
+            <td class="actionColumns">
+                <button class="btn btn-default" ui-sref="students.edit({studentId:stud.id})">
+                    <i class="glyphicon glyphicon-edit">
+                    </i>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-default" ng-click="deleteStudent(stud.id)">
+                    <i class="glyphicon glyphicon-trash">
+                    </i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!--<div modal="showModal" close="cancel()">
+    <div class="modal-header">
+        <h4>Modal Dialog</h4>
+    </div>
+    <div class="modal-body">
+        <p>Example paragraph with some text.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok()">Okay</button>
+        <button class="btn" ng-click="cancel()">Cancel</button>
+    </div>
+</div>-->

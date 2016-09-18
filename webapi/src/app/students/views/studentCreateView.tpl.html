@@ -1,5 +1,5 @@
 ﻿<style>
-    .createContainer {
+    /*.createContainer {
         background-color: #f2f2f2;
         border: 1px solid #ccc;
         padding: 20px;
@@ -7,64 +7,48 @@
         -webkit-box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
         box-shadow: 0 2px 2px 1px rgba(0,0,0,0.2);
     }
+
+    .backToListLink {
+        float: right;
+        position: relative;
+        margin-right: 120px;
+        clear: both;
+    }*/
 </style>
 
-<h1>Create Student</h1>
-<form novalidate ng-submit="createStudent()" class="createContainer">
-    <div class="form-group row">
-        <label for="example-text-input" class="col-xs-2 col-form-label">First Name *</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="text" ng-model="firstName" id="student-firstname" required>
+<h1>{{mode == "edit" ? "Edit": "Create"}} Student</h1>
+<form name="studentForm" novalidate class="createContainer" ng-submit="operation()">
+    <div class="container">
+        <div class="backToListLink"><a ui-sref="students.list">Back to List</a></div>
+
+        <div class="form-group col-sm-8" ng-class="{ 'has-error' : studentForm.firstName.$invalid && !studentForm.firstName.$pristine }">
+            <label class="col-sm-4">First Name</label>
+            <input type="text" name="firstName" class="form-control col-sm-4" ng-model="student.firstName" required>
+            <p ng-show="studentForm.firstName.$invalid && !studentForm.firstName.$pristine" class="help-block">first name is required.</p>
         </div>
-        <span ng-show="form.firstName.$error">First name is required!</span>
-    </div>
-    <div class="form-group row">
-        <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+
+        <div class="form-group col-sm-8" ng-class="{ 'has-error' : studentForm.lastName.$invalid && !studentForm.lastName.$pristine }">
+            <label class="col-sm-4">Last Name</label>
+            <input type="text" name="lastName" class="form-control col-sm-4" ng-model="student.lastName" required>
+            <p ng-show="studentForm.lastName.$invalid && !studentForm.lastName.$pristine" class="help-block">Last name is required.</p>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+
+        <div class="form-group col-sm-8" ng-class="{ 'has-error' : studentForm.grade.$invalid && !studentForm.grade.$pristine }">
+            <label class="col-sm-4">Grade</label>
+            <input type="text" name="grade" class="form-control col-sm-4" ng-model="student.grade" required>
+            <p ng-show="studentForm.grade.$invalid && !studentForm.grade.$pristine" class="help-block">Grade is required.</p>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
+
+        <div class="form-group col-sm-8" ng-class="{ 'has-error' : studentForm.dateOfBirth.$invalid && !studentForm.dateOfBirth.$pristine }">
+            <label class="col-sm-4">Date of Birth</label>
+            <input type="text" name="dateOfBirth" class="form-control col-sm-4" ng-model="student.dateOfBirth" required>
+            <p ng-show="studentForm.dateOfBirth.$invalid && !studentForm.dateOfBirth.$pristine" class="help-block">Date of birth is required.</p>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="password" value="hunter2" id="example-password-input">
+
+        <div class="form-group col-sm-8">
+            <div class="row">
+                <input type="submit" value="{{mode == 'edit' ? 'Update': 'Create'}} Student" class="btn btn-primary" ng-disabled="studentForm.$invalid" />
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="number" value="42" id="example-number-input">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
-        <div class="col-xs-10">
-            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-        </div>
-    </div>
-    <input type="submit" value="Create Student" />
 </form>

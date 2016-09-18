@@ -3,7 +3,8 @@
 
     angular.module('TP', [
     	'ui.router',
-        'TP.core'
+        'TP.core',
+        'TP.student'
     ])
     .config(moduleConfig).run(initialize);
 
@@ -45,21 +46,6 @@
             templateUrl: 'src/app/core/views/home.tpl.html',
             controller: 'HomeViewController as vm'
         })
-        .state('students', {
-            url: '/students',
-            templateUrl: 'src/app/students/views/studentsView.tpl.html'
-        })
-        .state('students.list', {
-            url: '/list',
-            templateUrl: 'src/app/students/views/studentListView.tpl.html',
-            controller: 'studentListViewController as vm'
-        })
-        .state('students.create', {
-            parent: 'students',
-            url: '/create',
-            templateUrl: 'src/app/students/views/studentCreateView.tpl.html',
-            controller: 'studentCreateViewController as vm'
-        });
 
         $urlRouterProvider.otherwise(function ($injector, $location) {
             var path = $location.path().split('/').slice(0, 2).join('/');
@@ -69,7 +55,6 @@
                 return '/error/404/?path=' + $location.$$path;
             }
         });
-
     }
 
     function initialize($log) {

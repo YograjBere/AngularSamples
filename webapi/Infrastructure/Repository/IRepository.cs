@@ -130,8 +130,9 @@ namespace webapi.Infrastructure.Repository
 
         public int CreateStudent(Student student)
         {
-            student.CreatedDate = DateTime.Now;
-            student.UpdatedDate = DateTime.Now;
+            student.CreatedDate = DateTime.Now.Date;
+            student.UpdatedDate = DateTime.Now.Date;
+            student.DateOfBirth = student.DateOfBirth.Date;
             var studentCreated = _dbContext.Students.Add(student);
             Save();
             return studentCreated.Id;
@@ -218,6 +219,7 @@ namespace webapi.Infrastructure.Repository
 
         public void UpdateStudent(Student student)
         {
+            student.UpdatedDate = DateTime.Now.Date;
             _dbContext.Entry(student).State = System.Data.Entity.EntityState.Modified;
             Save();
         }

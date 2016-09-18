@@ -33,11 +33,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Students List</a>
+                <a class="navbar-brand" ui-sref="students.list">Students List</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li ui-sref-active="active"><a ui-sref="students.list">Home</a></li>
+                    <li ui-sref-active="active"><a ui-sref="students.create">Create Student</a></li>
                 </ul>
             </div>
         </div>
@@ -63,6 +63,7 @@
     <script src="/dist.dev/app/students/student.module.js"></script>
     <script src="/dist.dev/app/core/controllers/homeView.controller.js"></script>
     <script src="/dist.dev/app/students/controllers/studentCreate.controller.js"></script>
+    <script src="/dist.dev/app/students/controllers/studentEditViewController.js"></script>
     <script src="/dist.dev/app/students/controllers/studentListView.controller.js"></script>
     <script src="/dist.dev/app/students/services/student.service.js"></script>
     <!-- endinject -->

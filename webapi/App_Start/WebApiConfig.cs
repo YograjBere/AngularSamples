@@ -11,7 +11,7 @@
     using System.Web.Http.ExceptionHandling;
     using Infrastructure.ErrorHandler;
     using Infrastructure.Logger;
-
+    using Newtonsoft.Json.Serialization;
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -31,6 +31,8 @@
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
             RegisterDependencies();
             RegisterValidator(config);
         }

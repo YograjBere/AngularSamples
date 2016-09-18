@@ -17,12 +17,14 @@ var concat = require('gulp-concat'),
 
 var paths = {
     scripts: ['src/app/**/*.module.js', 'src/app/**/*.js', '!src/app/**/*.spec.js'],
-    styles: './src/assets/**/**/_*.css',
+    fonts: './fonts/*.**',
+    styles: ['./src/assets/**/**/_*.css', './src/assets/*.{png,gif,jpg}'],
     index: './src/index.cshtml',
     partials: ['src/app/**/*.tpl.html', '!src/index.cshtml'],
     distDev: './dist.dev',
     distContentDev: './dist.dev/content',
     distVendorDev: './dist.dev/vendor',
+    distFontDev: './dist.dev/fonts',
     distScriptsDev: './dist.dev/app',
     distIndex: './Views/Home'
 };
@@ -85,6 +87,21 @@ gulp.task('css-dev', function () {
         .pipe(gulp.dest(paths.distContentDev));
 });
 
+/*
+ * Processes application fonts to dev dist path
+ * 
+ */
+gulp.task('font-dev', function () {
+    return gulp.src(paths.fonts)
+     .pipe(plumber({
+         errorHandler: function (err) {
+             console.log(err);
+             this.emit('end');
+         }
+     }))
+    .pipe(gulp.dest(paths.distFontDev));
+});
+
 /**
  * Copies html partials files to dev dist path
  */
@@ -139,7 +156,7 @@ gulp.task('copy-index', function () {
 /**
  * Creates development environment for testing
  */
-gulp.task('create-dev', ['index-dev', 'vendor-dev', 'css-dev', 'html-dev', 'scripts-dev']);
+gulp.task('create-dev', ['index-dev', 'vendor-dev', 'css-dev', 'html-dev', 'scripts-dev', 'font-dev']);
 
 
 /**
@@ -196,12 +213,12 @@ gulp.task('watch-dev', function () {
 gulp.task('serve', ['watch-dev'], function (cb) {
 
     function startBrowserSync() {
-    browserSync({
-        proxy: 'localhost:54858',
-        port: 3000,
-        ghostMode: false,
-        reloadDelay: 500
-    });
+        browserSync({
+            proxy: 'localhost:54858',
+            port: 3000,
+            ghostMode: false,
+            reloadDelay: 500
+        });
 
     }
 

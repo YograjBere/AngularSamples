@@ -304,6 +304,7 @@
     <Content Include="src\app\core\controllers\homeView.controller.js" />
     <Content Include="src\app\core\controllers\homeView.controller.spec.js" />
     <Content Include="src\app\students\controllers\studentCreate.controller.js" />
+    <Content Include="src\app\students\controllers\studentEditViewController.js" />
     <Content Include="src\app\students\controllers\studentListView.controller.js" />
     <Content Include="src\app\core\core.module.js" />
     <Content Include="src\app\core\views\error.tpl.html" />
