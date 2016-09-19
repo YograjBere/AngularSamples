@@ -303,6 +303,7 @@
     <Content Include="src\app\app.module.js" />
     <Content Include="src\app\core\controllers\homeView.controller.js" />
     <Content Include="src\app\core\controllers\homeView.controller.spec.js" />
+    <Content Include="src\app\core\Services\notificationService.js" />
     <Content Include="src\app\students\controllers\studentCreate.controller.js" />
     <Content Include="src\app\students\controllers\studentEditViewController.js" />
     <Content Include="src\app\students\controllers\studentListView.controller.js" />

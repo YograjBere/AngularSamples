@@ -4,7 +4,7 @@
     angular.module('TP.student.controllers')
         .controller('studentCreateViewController', studentCreateViewController);
 
-    function studentCreateViewController($scope, studentService, $log, $stateParams) {
+    function studentCreateViewController($scope, studentService, $log, $stateParams, notificationService) {
         var vm = this;
         $scope.student = {};
         $scope.id = $stateParams.studentId;
@@ -16,8 +16,10 @@
             promise.then(function (payload) {
                 $scope.studentId = payload.data;
                 studentService.gotoState('students.list');
+                notificationService.success('Created student successfully.');
             }, function (errorPayload) {
                 $log.error(errorPayload);
+                notificationService.error('Error creating student..!');
             });
         }
 
@@ -35,8 +37,10 @@
             promise.then(function (payload) {
                 $scope.student = payload.data;
                 studentService.gotoState('students.list');
+                notificationService.success('Updated student successfully.');
             }, function (errorPayload) {
                 $log.error(errorPayload);
+                notificationService.error('Error updating student..!');
             });
         }
 
@@ -55,6 +59,6 @@
         $scope.updateStudent = updateStudent;
     }
 
-    studentCreateViewController.$inject = ['$scope', 'studentService', '$log', '$stateParams'];
+    studentCreateViewController.$inject = ['$scope', 'studentService', '$log', '$stateParams', 'notificationService'];
 
 })();

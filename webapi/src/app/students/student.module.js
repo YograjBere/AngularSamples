@@ -3,7 +3,8 @@
 
     angular.module('TP.student', [
         'TP.student.controllers',
-        'TP.student.services'
+        'TP.student.services',
+        'TP.core.services'
     ])
     .config(moduleConfig);
 
@@ -34,5 +35,5 @@
 
     moduleConfig.$inject = ['$stateProvider'];
     angular.module('TP.student.services', []);
-    angular.module('TP.student.controllers', ['TP.student.services', 'ui.router']);
+    angular.module('TP.student.controllers', ['TP.student.services', 'ui.router', 'TP.core.services']);
 })();

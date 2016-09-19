@@ -4,7 +4,7 @@
     angular.module('TP.student.controllers')
         .controller('studentListViewController', studentListViewController);
 
-    function studentListViewController($scope, studentService, $log, $route) {
+    function studentListViewController($scope, studentService, $log, notificationService) {
         var vm = this;
         $scope.studentList = [];
 
@@ -26,12 +26,14 @@
                             if (student.id == id) {
                                 var index = $scope.studentList.indexOf(student);
                                 $scope.studentList.splice(index, 1);
-                                studentService.reloadState();
+                                //studentService.reloadState();
+                                notificationService.success('Deleted student successfully.');
                             }
                         });
                         studentService.gotoState('students.list');
                     }, function (errorPayload) {
                         $log.error(errorPayload);
+                        notificationService.error('Error deleting student..!');
                     });
                 }
             });
@@ -41,6 +43,6 @@
         $scope.deleteStudent = deleteStudent;
         getStudentList();
     }
-    studentListViewController.$inject = ['$scope', 'studentService', '$log'];
+    studentListViewController.$inject = ['$scope', 'studentService', '$log', 'notificationService'];
 
 })();

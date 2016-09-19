@@ -4,7 +4,7 @@
     angular.module('TP.student.controllers')
     .controller('studentEditViewController', studentEditViewController);
 
-    function studentEditViewController($scope, $q, $http, studentService, $state, $stateParams) {
+    function studentEditViewController($scope, $q, $http, studentService, $state, $stateParams, toastr) {
         var vm = this;
         $scope.id = $stateParams.studentId;
         $scope.student = {};
@@ -33,5 +33,5 @@
         getStudent();
     }
 
-    studentEditViewController.$inject = ['$scope', '$q', '$http', 'studentService', '$state', '$stateParams']
+    studentEditViewController.$inject = ['$scope', '$q', '$http', 'studentService', '$state', '$stateParams', 'toastr']
 })();
